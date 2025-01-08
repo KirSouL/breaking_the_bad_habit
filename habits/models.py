@@ -1,5 +1,4 @@
 from django.db import models
-from datetime import datetime
 from django.utils import timezone
 
 from config.settings import AUTH_USER_MODEL
@@ -18,6 +17,7 @@ class Habit(models.Model):
         on_delete=models.CASCADE,
         verbose_name="Создатель привычки (владелец)",
         help_text="Укажите создателя привычки (владельца)",
+        **NULLABLE
     )
     place = models.CharField(
         max_length=100,
@@ -59,7 +59,7 @@ class Habit(models.Model):
         help_text="Укажите награду за выполение привычки (действия)",
         **NULLABLE
     )
-    time_to_compete = models.PositiveIntegerField(
+    time_to_complete = models.PositiveIntegerField(
         default=0,
         verbose_name="Время на выполнение привычки",
         **NULLABLE
@@ -72,7 +72,7 @@ class Habit(models.Model):
         **NULLABLE
     )
     created_at = models.DateField(
-        default=timezone.now,
+        default=timezone.now(),
         verbose_name="Дата создания привычки",
         **NULLABLE
     )

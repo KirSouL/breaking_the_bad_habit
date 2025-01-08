@@ -45,10 +45,24 @@ class User(AbstractUser):
         help_text="Укажите город",
         **NULLABLE
     )
-
     token = models.CharField(
         max_length=255,
         verbose_name="Token",
+        **NULLABLE
+    )
+    tg_username = models.CharField(
+        max_length=100,
+        verbose_name="Ник в Телеграм",
+        **NULLABLE
+    )
+    tg_id = models.CharField(
+        max_length=100,
+        verbose_name="ID телеграм",
+        **NULLABLE
+    )
+    is_subscription = models.BooleanField(
+        default=False,
+        verbose_name='Подписка на напоминания',
         **NULLABLE
     )
 
